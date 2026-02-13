@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     AWS_REGION = "eu-central-1"
-    ECR_REPO   = "demo-app"
+    ECR_REPO   = "tk-demo-app"
     IMAGE_TAG  = "${BUILD_NUMBER}"
   }
 
