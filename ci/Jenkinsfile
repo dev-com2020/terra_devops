@@ -51,7 +51,7 @@ pipeline {
           passwordVariable: 'AWS_SECRET_ACCESS_KEY'
         )]) {
           sh '''
-            
+	    bash -lc '	            
 	    set -euo pipefail
             export AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
             export AWS_REGION="${AWS_REGION}"
@@ -67,7 +67,7 @@ pipeline {
             docker push "${ECR_URL}/${ECR_REPO}:${IMAGE_TAG}"
 
             echo "PUSHED: ${ECR_URL}/${ECR_REPO}:${IMAGE_TAG}"
-          '''
+          ' '''
         }
       }
     }
