@@ -20,8 +20,9 @@ pipeline {
           passwordVariable: 'AWS_SECRET_ACCESS_KEY'
         )]) {
           dir("infra") {
-            sh '''
-              set -euo pipefail
+            sh '''bash -lc '
+              
+	      set -euo pipefail
               export AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
               export AWS_REGION="${AWS_REGION}"
               export AWS_DEFAULT_REGION="${AWS_REGION}"
@@ -30,7 +31,7 @@ pipeline {
               terraform validate
               terraform apply -auto-approve -input=false
               terraform output
-            '''
+            ' '''
           }
         }
       }
@@ -50,7 +51,8 @@ pipeline {
           passwordVariable: 'AWS_SECRET_ACCESS_KEY'
         )]) {
           sh '''
-            set -euo pipefail
+            
+	    set -euo pipefail
             export AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
             export AWS_REGION="${AWS_REGION}"
             export AWS_DEFAULT_REGION="${AWS_REGION}"
